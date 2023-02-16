@@ -1,0 +1,6 @@
+Tworzenie środowiska w wybranym miejscu:
+python -m virtualenv work_env
+
+Uruchamianie tego środowiska w cmd:
+work_env\Scripts\activate
+
