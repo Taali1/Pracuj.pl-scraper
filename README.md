@@ -4,7 +4,7 @@ Application for scraping data from page: pracuj.pl
 ## Description
 It's project for scraping data from pracuj.pl with filters and chousen optinos.
 It's product is CSV file separated by semicolons, saved in choosen destination (default is root of the core.py file)
-Result data is in UTF-8
+Result data is in UTF-8 character encoding system
 
 ### Filters:
 - range of pages
