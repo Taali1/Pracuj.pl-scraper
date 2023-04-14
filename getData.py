@@ -1,8 +1,9 @@
 import time
+from datetime import date
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 import pandas as pd
-
+import os
 
 def close_pops(driver):
     time.sleep(3) # Idk dlaczego trzeba czekać, tydziń temu nie było potrzeby
@@ -88,7 +89,7 @@ def get_data(driver, iterations, final_data, title: bool = False, level: bool = 
             print("Requiments picked")
         if company:
             final_data['company'] = get_company(offers)
-            print("Company names picked")    
+            print("Company names picked")
 
         # Szuka przycisku następnej strony
         pagination = driver.find_element(By.CLASS_NAME, "w1h4nogz")
@@ -107,7 +108,9 @@ def get_data(driver, iterations, final_data, title: bool = False, level: bool = 
             return final_data
 
 
-def convert_to_csv(data, file_name: str = "work.csv", path: str = ""):
+def convert_to_csv(data, path: str):
     df = pd.DataFrame(data)
-    df.to_csv("work.csv", sep=";")
-    return file_name
+    current_directory = os.getcwd()
+    file_name = f"work_{date.today()}.csv"
+    df.to_csv(current_directory+path+file_name, sep=";", )
+    return file_name, current_directory

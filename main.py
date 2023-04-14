@@ -3,7 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from getData import *
 
 
-def main_download(link: str, title: bool = False, level: bool = False, pay: bool = False, requirements: bool = False, company: bool = False, path: str = ""):
+def main_download(link: str, title: bool = False, level: bool = False, pay: bool = False, requirements: bool = False, company: bool = False, path: str = "/data/"):
     my_data = {}
 
     # Tworzenie drivera
@@ -26,6 +26,6 @@ def main_download(link: str, title: bool = False, level: bool = False, pay: bool
 
     # Z zebranych danych tworzy skoroszyt danych
     print("\nConverting to .csv...")
-    print(f"File's location {path}")
-    convert_to_csv(my_data, path)
-    print(f"Converting finished\nFile name: work.csv")
+    file_name, directory = convert_to_csv(my_data, path)
+    print(f"Converting finished\nFile name: {file_name}")
+    print(f"File's location {directory}")
