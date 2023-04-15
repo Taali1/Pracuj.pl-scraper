@@ -8,8 +8,11 @@ def main_download(link: str, title: bool = False, level: bool = False, pay: bool
 
     # Tworzenie drivera
     def get_driver(link):
-        driver = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        driver = webdriver.Chrome(options=chrome_options)
         driver.get(link)
+        driver.set_window_size(1440, 900)
         return driver
 
     # Włącza przeglądarkę oraz pobiera jej dane

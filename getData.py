@@ -10,6 +10,8 @@ def close_pops(driver):
     # Akceptuje ciasteczka
     cookies = driver.find_element(By.CLASS_NAME, "a1evy8ht")
     btn_cookies = cookies.find_element(By.TAG_NAME, "button")
+        print("No cookies")
+        return 0
     # Jeżeli ciasteczka nie zostały zaakceptowane, akceptuje
     if btn_cookies:
         btn_cookies.click()
@@ -112,5 +114,6 @@ def convert_to_csv(data, path: str):
     df = pd.DataFrame(data)
     current_directory = os.getcwd()
     file_name = f"work_{date.today()}.csv"
-    df.to_csv(current_directory+path+file_name, sep=";", )
+    final_path = current_directory+path+file_name
+    df.to_csv(final_path, sep=";", )
     return file_name, current_directory
