@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 import pandas as pd
 import os
+from count_pages import pages_count, offers_count
 
 def close_pops(driver):
     time.sleep(3) # Idk dlaczego trzeba czekać, tydziń temu nie było potrzeby
@@ -69,6 +70,10 @@ def get_company(offer_list):
 # Przwija storny oraz pobiera dane z pomocą funkcji get_offerts
 def get_data(driver, iterations, final_data, title: bool = False, level: bool = False, pay: bool = False, requiments: bool = False, company: bool = False, number_of_pages: int = 2):
     loop = 0
+
+    print(f"\nZnaleziono {offers_count(driver.page_source)}")
+    print(f"Liczba stron {pages_count(driver.page_source)}\n")
+
 
     while True:
         loop += 1
