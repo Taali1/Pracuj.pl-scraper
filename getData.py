@@ -8,8 +8,10 @@ import os
 def close_pops(driver):
     time.sleep(3) # Idk dlaczego trzeba czekać, tydziń temu nie było potrzeby
     # Akceptuje ciasteczka
-    cookies = driver.find_element(By.CLASS_NAME, "a1evy8ht")
-    btn_cookies = cookies.find_element(By.TAG_NAME, "button")
+    try:
+        cookies = driver.find_element(By.CLASS_NAME, "a1evy8ht")
+        btn_cookies = cookies.find_element(By.TAG_NAME, "button")
+    except:
         print("No cookies")
         return 0
     # Jeżeli ciasteczka nie zostały zaakceptowane, akceptuje
